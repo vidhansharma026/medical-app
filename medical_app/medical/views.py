@@ -57,14 +57,14 @@ def appointment(request):
         mobile = request.POST.get('mobile')
         date = request.POST.get('date')
         doctor_id = request.POST.get('doctor')
-        department_id = request.POST.get('department')
-        information = request.POST.get('information')
+        # department_id = request.POST.get('department')
+        # information = request.POST.get('information')
         doctor = Doctor.objects.get(id = doctor_id)
-        doctor = Doctor.objects.get(id = department_id)
+        # department = Doctor.objects.get(id = department_id)
         if Appointment.objects.filter(name = name).exists():
             messages.error(request,'appointment already exists')
         else:
-            Appointment.objects.create(name = name, email = email, mobile = mobile, date = date, doctor = doctor, doctor = doctor, information = information)
+            Appointment.objects.create(name = name, email = email, mobile = mobile, date = date, doctor = doctor)
             messages.success(request,'appointment is successfully added')
             appointment =Appointment.objects.all()
             return render(request, 'appointment.html', {'appointment': appointment})

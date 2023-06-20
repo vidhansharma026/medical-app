@@ -27,7 +27,6 @@ class Appointment(models.Model):
     mobile = models.IntegerField()
     date = models.DateField()
     doctor = models.ForeignKey(Doctor,on_delete=models.CASCADE)
-    information = models.TextField()
-
+    
     def __str__(self):
         return self.name

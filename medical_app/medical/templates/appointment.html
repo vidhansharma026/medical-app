@@ -64,14 +64,14 @@
               <div class="col-md-4 form-group mt-3">
                 <input type="date" name="date" class="form-control datepicker" id="date" placeholder="Appointment Date" required>
               </div>
-              <div class="col-md-4 form-group mt-3">
+              {% comment %} <div class="col-md-4 form-group mt-3">
                 <select name="department" id="department" class="form-select form-control">
                   <option selected>Select Department</option>
                   {% for d in doctors %}
                   <option value="{{d.id}}">{{d.department}}</option>
                   {% endfor %}
                 </select>
-              </div>
+              </div> {% endcomment %}
               <div class="col-md-4 form-group mt-3">
                 <select name="doctor" id="doctor" class="form-select">
                   <option selected>Select Doctor</option>
