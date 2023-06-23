@@ -64,26 +64,26 @@
               <div class="col-md-4 form-group mt-3">
                 <input type="date" name="date" class="form-control datepicker" id="date" placeholder="Appointment Date" required>
               </div>
-              {% comment %} <div class="col-md-4 form-group mt-3">
+              <div class="col-md-4 form-group mt-3">
                 <select name="department" id="department" class="form-select form-control">
                   <option selected>Select Department</option>
                   {% for d in doctors %}
                   <option value="{{d.id}}">{{d.department}}</option>
                   {% endfor %}
                 </select>
-              </div> {% endcomment %}
+              </div>
               <div class="col-md-4 form-group mt-3">
                 <select name="doctor" id="doctor" class="form-select">
                   <option selected>Select Doctor</option>
                   {% for d in doctors %}
-                  <option value="{{d.id}}">{{d.name}} {{d.specialist}}</option>
+                  <option value="{{d.id}}">{{d.dname}} {{d.specialist}}</option>
                   {% endfor %}
                 </select>
               </div>
             </div>
             <div class="text-center mt-4">
               <button type="submit">Make an Appointment</button>
-            </div>
+            </div><br><br>
             {% if  messages %}
             {% for message in messages %}
             <div class="alert alert-{{message.tags}} alert-dismissible fade show" role="alert">
@@ -92,10 +92,74 @@
             </div>
             {% endfor %}
             {% endif %}
-          </form>
-  
+          </form> 
         </div>
       </section><!-- End Appointment Section -->
+
+      <div class="row mt-4 mb-4">
+        <div class="col-lg-12 col-md-6 mb-md-0 mb-4">
+          <div class="card">
+            <div class="card-header pb-0">
+              <div class="row">
+                <div class="col-lg-6 col-7">
+                  <h6>Total Appointments</h6>
+                </div>
+
+              </div>
+            </div>
+            {% if appointment %}
+            <div class="card-body px-0 pb-2">
+              <div class="table-responsive">
+                <table class="table align-items-center mb-0">
+                  <thead>
+                    <tr>
+                      <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Id</th>
+                      <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">PName</th>
+                      <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Email</th>
+                      <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Mobile</th>
+                      <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Date</th>
+                      <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Doctor</th>
+                      <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Department</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {% for i in appointment %}
+                    <tr>
+                      <td class="align-middle text-center text-sm">
+                        <span class="text-xs font-weight-bold">{{i.id}}</span>
+                      </td>
+                      <td class="align-middle text-center text-sm">
+                        <span class="text-xs font-weight-bold">{{i.pname}}</span>
+                      </td>
+                      <td class="align-middle text-center text-sm">
+                        <span class="text-xs font-weight-bold">{{i.email}}</span>
+                      </td>
+                      <td class="align-middle text-center text-sm">
+                        <span class="text-xs font-weight-bold">{{i.mobile}}</span>
+                      </td>
+                      
+                      <td class="align-middle text-center text-sm">
+                        <span class="text-xs font-weight-bold">{{i.date}}</span>
+                      </td>
+                      <td class="align-middle text-center text-sm">
+                        <span class="text-xs font-weight-bold">{{i.doctor.dname}}</span>
+                      </td>
+                      <td class="align-middle text-center text-sm">
+                        <span class="text-xs font-weight-bold">{{i.department.department}}</span>
+                      </td>
+                    </tr>
+                    {% endfor %}
+                  </tbody>
+                </table>
+                {% else %}
+                <h4 class="text-center alert alert-warning">No Records</h4>
+                {% endif %}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+  
 
     <!-- ======= Footer ======= -->
     <footer id="footer">
@@ -105,12 +169,13 @@
     
               <div class="col-lg-3 col-md-6">
                 <div class="footer-info">
-                  <h3>Medicio</h3>
+                  <h3>Lotus</h3>
                   <p>
-                    A108 Adam Street <br>
-                    NY 535022, USA<br><br>
+                    Sapna Sangeeta, indore India <br>
+                    128/47 new agrawal nagar<br><br>
                     <strong>Phone:</strong> +1 5589 55488 55<br>
-                    <strong>Email:</strong> info@example.com<br>
+                    <strong>Mobile:</strong> +91 7047257520<br>
+                    <strong>Email:</strong> lotus@gmail.com<br>
                   </p>
                   <div class="social-links mt-3">
                     <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
@@ -123,55 +188,54 @@
               </div>
     
               <div class="col-lg-2 col-md-6 footer-links">
-                <h4>Useful Links</h4>
+                <h4>Centers</h4>
                 <ul>
-                  <li><i class="bx bx-chevron-right"></i> <a href="#">Home</a></li>
-                  <li><i class="bx bx-chevron-right"></i> <a href="#">About us</a></li>
-                  <li><i class="bx bx-chevron-right"></i> <a href="#">Services</a></li>
-                  <li><i class="bx bx-chevron-right"></i> <a href="#">Terms of service</a></li>
-                  <li><i class="bx bx-chevron-right"></i> <a href="#">Privacy policy</a></li>
+                  <li><i class="bx bx-chevron-right"></i> <span>Indore</span></li>
+                  <li><i class="bx bx-chevron-right"></i> <span>Delhi</span></li>
+                  <li><i class="bx bx-chevron-right"></i> <span>Ahemdabad</span></li>
+                  <li><i class="bx bx-chevron-right"></i> <span>Ratlam</span></li>
+                  <li><i class="bx bx-chevron-right"></i> <span>Udaipur</span></li>
+                  <li><i class="bx bx-chevron-right"></i> <span>Jaipur</span></li>
                 </ul>
               </div>
     
               <div class="col-lg-3 col-md-6 footer-links">
                 <h4>Our Services</h4>
                 <ul>
-                  <li><i class="bx bx-chevron-right"></i> <a href="#">Web Design</a></li>
-                  <li><i class="bx bx-chevron-right"></i> <a href="#">Web Development</a></li>
-                  <li><i class="bx bx-chevron-right"></i> <a href="#">Product Management</a></li>
-                  <li><i class="bx bx-chevron-right"></i> <a href="#">Marketing</a></li>
-                  <li><i class="bx bx-chevron-right"></i> <a href="#">Graphic Design</a></li>
+                  <li><i class="bx bx-chevron-right"></i><span href="#">Emergency room services.</span></li>
+                  <li><i class="bx bx-chevron-right"></i><span href="#">Short-term hospitalization.</span></li>
+                  <li><i class="bx bx-chevron-right"></i><span href="#">X-ray/radiology services.</span></li>
+                  <li><i class="bx bx-chevron-right"></i><span href="#">General and specialty surgical services.</span></li>
+                  <li><i class="bx bx-chevron-right"></i><span href="#">Blood services.</span></li>
+                  <li><i class="bx bx-chevron-right"></i><span href="#">Laboratory services.</span></li>
                 </ul>
               </div>
     
-              <div class="col-lg-4 col-md-6 footer-newsletter">
+              <div class="col-lg-4 col-md-6">
                 <h4>Our Newsletter</h4>
-                <p>Tamen quem nulla quae legam multos aute sint culpa legam noster magna</p>
-                <form action="" method="post">
-                  <input type="email" name="email"><input type="submit" value="Subscribe">
-                </form>
-    
+                <p>Daily News of Lotus Hospital is published on www.lotus.com</p>
+                <form action="" method="">
+                  <div class="text-center mt-4 mx-2">
+                    <input type="email" name="email" placeholder="Enter Your Email" class="border border-info form-control">
+                  </div>
+                  <div class="text-center mt-4 mb-2">
+                    <button type="submit" class="btn btn-info">Subscribe</button>
+                  </div>
+                </form> 
               </div>
-    
             </div>
           </div>
         </div>
     
         <div class="container">
-          <div class="copyright">
-            &copy; Copyright <strong><span>Medicio</span></strong>. All Rights Reserved
+          <div class="text-center mt-3">
+            &copy; Copyright <strong><span>Lotus</span></strong>. All Rights Reserved
           </div>
-          <div class="credits">
-            <!-- All the links in the footer should remain intact. -->
-            <!-- You can delete the links only if you purchased the pro version. -->
-            <!-- Licensing information: https://bootstrapmade.com/license/ -->
-            <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/medicio-free-bootstrap-theme/ -->
-            Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+          <div class="text-center">
+            Designed by Sharma
           </div>
         </div>
       </footer><!-- End Footer -->
 
-    <!-- Template Main JS File -->
-    <script src="{% static 'js/main.js' %}"></script>
 </body>
 </html>

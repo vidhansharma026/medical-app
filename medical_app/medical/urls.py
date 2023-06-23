@@ -11,4 +11,6 @@ urlpatterns = [
     path('home/', views.home, name='home'),
     path('appointment/', views.appointment, name='appointment'),
     path('appoint/', views.appoint, name='appoint'),
+    path('msgs/', views.msgs, name='msgs'),
+    path('subscribe/', views.subscribe, name='subscribe'),
 ]+static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)
